@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0f1512">
+  <title>Auguste Studio</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <canvas class="ambient" id="ambient" aria-hidden="true"></canvas>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Accueil Auguste Studio">
+      <span class="mark">A</span>
+      <span>
+        <strong>Auguste Studio</strong>
+        <small>assistant, images et video</small>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Navigation">
+      <a href="#chat">Discuter</a>
+      <a href="#creation">Creer</a>
+      <a href="#hebergement">URL</a>
+    </nav>
+    <button class="ghost-button" id="settings" type="button">Connecter OpenAI</button>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Site personnel d'Auguste</p>
+        <h1 id="hero-title">Ton espace pour parler avec ton IA et creer tes idees.</h1>
+        <p class="lede">Une page simple a lancer, avec chat, creation d'images, point d'entree video, et les bases pour l'heberger ensuite avec une URL publique.</p>
+        <div class="hero-actions">
+          <a class="primary-button" href="#chat">Ouvrir l'assistant</a>
+          <a class="secondary-button" href="#hebergement">Voir l'hebergement</a>
+        </div>
+      </div>
+      <aside class="signal-panel" aria-label="Apercu Auguste Studio">
+        <div class="signal-header">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="signal-body">
+          <p>Auguste Studio</p>
+          <strong id="clock">Pret</strong>
+          <div class="wave" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section class="workspace" id="chat" aria-label="Assistant Auguste">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">Assistant</p>
+          <h2>IA du Grand Auguste</h2>
+        </div>
+        <div class="status"><span class="dot"></span><span id="statusText">Demo</span></div>
+      </div>
+
+      <div class="tools" id="creation" aria-label="Outils de creation">
+        <button class="tool-button" id="imageButton" type="button">Creer une image</button>
+        <button class="tool-button" id="videoButton" type="button">Creer une video</button>
+      </div>
+
+      <div class="suggestions" id="suggestions">
+        <button type="button">Donne-moi une idee originale</button>
+        <button type="button">Aide-moi a ecrire un texte</button>
+        <button type="button">Explique-moi quelque chose simplement</button>
+      </div>
+
+      <section class="chat" aria-live="polite">
+        <div class="message assistant">
+          <div class="label">IA du Grand Auguste</div>
+          Salut Auguste. Connecte OpenAI pour obtenir de vraies reponses et creer des images. La partie video est prete pour NemoVideo cote serveur.
+        </div>
+      </section>
+
+      <form class="compose" id="form">
+        <textarea id="prompt" rows="1" placeholder="Ecris ton message..." aria-label="Votre message"></textarea>
+        <button class="send" aria-label="Envoyer" type="submit">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+        </button>
+      </form>
+      <p class="note" id="note">Mode demo. Ajoute une cle API OpenAI pour activer les reponses et les images.</p>
+    </section>
+
+    <section class="hosting" id="hebergement" aria-labelledby="hosting-title">
+      <div>
+        <p class="eyebrow">Mise en ligne</p>
+        <h2 id="hosting-title">Pour avoir une URL</h2>
+      </div>
+      <div class="steps">
+        <article>
+          <span>1</span>
+          <h3>Lance le site</h3>
+          <p>Demarre l'application et verifie que tout marche en local sur ton ordinateur.</p>
+        </article>
+        <article>
+          <span>2</span>
+          <h3>Choisis un hebergeur</h3>
+          <p>Utilise Render, Railway, Fly.io ou un serveur Node.js. Cette app a besoin d'un serveur, pas seulement de fichiers statiques.</p>
+        </article>
+        <article>
+          <span>3</span>
+          <h3>Ajoute les cles</h3>
+          <p>Configure les variables secretes chez l'hebergeur, puis il te donnera une adresse publique.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <form class="dialog" id="keyForm">
+      <h2>Connecter OpenAI</h2>
+      <p>Colle ta cle API OpenAI. Elle reste dans cet onglet uniquement et sera oubliee a la fermeture.</p>
+      <input id="apiKey" type="password" placeholder="Cle API OpenAI" autocomplete="off" aria-label="Cle API OpenAI">
+      <div class="dialog-actions">
+        <button type="button" id="cancel">Annuler</button>
+        <button class="save" type="submit">Connecter</button>
+      </div>
+    </form>
+  </div>
+
+  <footer>Auguste Studio · Pret pour hebergement Node.js</footer>
+  <script src="./app.js"></script>
+</body>
+</html>
